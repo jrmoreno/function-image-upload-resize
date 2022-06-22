@@ -87,6 +87,7 @@ namespace ImageFunctions
                     if (encoder != null)
                     {
                         var thumbnailWidth = Convert.ToInt32(Environment.GetEnvironmentVariable("THUMBNAIL_WIDTH"));
+                        var thumbnailHeight = Convert.ToInt32(Environment.GetEnvironmentVariable("THUMBNAIL_HEIGHT"));
                         var thumbContainerName = Environment.GetEnvironmentVariable("THUMBNAIL_CONTAINER_NAME");
                         var blobServiceClient = new BlobServiceClient(BLOB_STORAGE_CONNECTION_STRING);
                         var blobContainerClient = blobServiceClient.GetBlobContainerClient(thumbContainerName);
@@ -97,7 +98,7 @@ namespace ImageFunctions
                         {
                             // var divisor = image.Width / thumbnailWidth;
                             // var height = Convert.ToInt32(Math.Round((decimal)(image.Height / divisor)));
-                            var height = 640;
+                            var height = thumbnailHeight;
 
                             image.Mutate(x => x.Resize(thumbnailWidth, height));
                             image.Save(output, encoder);
