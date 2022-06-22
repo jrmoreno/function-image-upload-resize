@@ -97,7 +97,7 @@ namespace ImageFunctions
                         {
                             // var divisor = image.Width / thumbnailWidth;
                             // var height = Convert.ToInt32(Math.Round((decimal)(image.Height / divisor)));
-                            var height = 640
+                            var height = 640;
 
                             image.Mutate(x => x.Resize(thumbnailWidth, height));
                             image.Save(output, encoder);
