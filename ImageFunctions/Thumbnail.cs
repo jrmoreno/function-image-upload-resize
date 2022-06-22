@@ -100,7 +100,7 @@ namespace ImageFunctions
                             // var height = Convert.ToInt32(Math.Round((decimal)(image.Height / divisor)));
                             var height = thumbnailHeight;
 
-                            image.Mutate(x => x.Resize(thumbnailWidth, height));
+                            image.Mutate(x => x.Crop(thumbnailWidth, height));
                             image.Save(output, encoder);
                             output.Position = 0;
                             await blobContainerClient.UploadBlobAsync(blobName, output);
